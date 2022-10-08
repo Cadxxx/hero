@@ -151,7 +151,7 @@ public class Arena {
         public void draw(TextGraphics screen){
             screen.setForegroundColor(TextColor.Factory.fromString("#FFFF33"));
             screen.enableModifiers(SGR.BOLD);
-            screen.putString(new TerminalPosition(getPosition().getX(), getPosition().getY()), "X");
+            screen.putString(new TerminalPosition(getPosition().getX(), getPosition().getY()), "H");
         }
     }
 }
