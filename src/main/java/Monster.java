@@ -11,9 +11,9 @@ public class Monster extends Element{
 
     @Override
     public void draw(TextGraphics screen) {
-        screen.setForegroundColor(TextColor.Factory.fromString("#339933"));
+        screen.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
         screen.enableModifiers(SGR.BOLD);
-        screen.putString(new TerminalPosition(getPosition().getX(), getPosition().getY()), "m");
+        screen.putString(new TerminalPosition(getPosition().getX(), getPosition().getY()), "M");
     }
 
     public Position move(Arena arena){

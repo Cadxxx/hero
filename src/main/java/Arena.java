@@ -21,7 +21,7 @@ public class Arena {
     }
 
     public void draw(TextGraphics screen) {
-        screen.setBackgroundColor(TextColor.Factory.fromString("#336699"));
+        screen.setBackgroundColor(TextColor.Factory.fromString("#90EE90"));
         screen.fillRectangle(new TerminalPosition(0,0), new TerminalSize(width, height), ' ');
 
         hero.draw(screen);
@@ -83,8 +83,12 @@ public class Arena {
 
     private List<Coin> createCoins() {
         Random random = new Random();
+        Random r = new Random();
+        int low = 2;
+        int high = 15;
+        int res = r.nextInt(high-low) + low;
         ArrayList<Coin> coins = new ArrayList<>();
-        for(int i=0; i<5; i++){
+        for(int i=0; i<res; i++){
             Coin newcoin = new Coin(random.nextInt(width-2) + 1,
                     random.nextInt(height-2)+1);
             if(!coins.contains(newcoin) && !newcoin.getPosition().equals(hero.getPosition()))
@@ -95,8 +99,12 @@ public class Arena {
 
     private List<Monster> createMonsters() {
         Random random = new Random();
+        Random r = new Random();
+        int low = 5;
+        int high = 20;
+        int res = r.nextInt(high-low) + low;
         ArrayList<Monster> monsters = new ArrayList<>();
-        for(int i=0; i<5; i++){
+        for(int i=0; i<res; i++){
             Monster newmonster = new Monster(random.nextInt(width-2) + 1,
                     random.nextInt(height-2)+1);
             if(!monsters.contains(newmonster) && !newmonster.getPosition().equals(hero.getPosition()))
@@ -113,7 +121,13 @@ public class Arena {
             }
         }
     }
-
+    /*
+    public boolean nocoinsleft(){
+        for(Coin coin : coins){
+            if (coin.getPosition().equals())
+        }
+    }
+    */
     public void moveMonsters(){
         for(Monster monster : monsters){
             monster.setPosition(monster.move(this));
@@ -149,7 +163,7 @@ public class Arena {
         }
 
         public void draw(TextGraphics screen){
-            screen.setForegroundColor(TextColor.Factory.fromString("#FFFF33"));
+            screen.setForegroundColor(TextColor.Factory.fromString("#4169E1"));
             screen.enableModifiers(SGR.BOLD);
             screen.putString(new TerminalPosition(getPosition().getX(), getPosition().getY()), "H");
         }
